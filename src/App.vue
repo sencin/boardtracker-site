@@ -1,197 +1,129 @@
 <script setup lang="ts">
+const features = [
+  { title: "Tenants", desc: "Manage tenant records easily" },
+  { title: "Rooms", desc: "Track occupancy & availability" },
+  { title: "Assignments", desc: "Auto rent computation" },
+  { title: "Payments", desc: "Monitor rent payments" },
+  { title: "Expenses", desc: "Track bills & utilities" },
+  { title: "Inventory", desc: "Manage room items" },
+];
 </script>
 
 <template>
-  <div class="app">
+  <div class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors">
+
     <!-- NAVBAR -->
-    <nav class="navbar">
-      <h2>BoardTracker</h2>
-      <a href="/downloads/boardtracker.apk" class="btn small">Download</a>
+    <nav class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-800">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 class="font-bold text-lg">BoardTracker</h1>
+
+        <a href="/downloads/boardtracker.apk"
+           class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+          Download
+        </a>
+      </div>
     </nav>
 
     <!-- HERO -->
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Manage Your Boarding House Smarter</h1>
-        <p>
-          Track tenants, rooms, payments, and inventory — all in one app.
-        </p>
+    <section class="relative overflow-hidden">
+      <!-- gradient background -->
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 opacity-90"></div>
 
-        <a href="/downloads/boardtracker.apk" class="btn">
-          Download APK
-        </a>
+      <!-- glow -->
+      <div class="absolute -top-40 -left-40 w-[400px] h-[400px] bg-blue-400 rounded-full blur-3xl opacity-30"></div>
 
-        <span class="sub">Free • Offline-first</span>
-      </div>
+      <div class="relative max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center text-white">
 
-      <div class="hero-image">
-        <img src="/screens/dashboard.png" />
+        <!-- TEXT -->
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+            Smart Boarding House
+            <br />
+            <span class="text-blue-200">Management System</span>
+          </h1>
+
+          <p class="mt-5 text-blue-100">
+            Simplify tenant tracking, room assignments, inventory, and payments — all in one powerful app.
+          </p>
+
+          <div class="mt-8 flex items-center gap-4 flex-wrap">
+            <a href="/downloads/boardtracker.apk"
+               class="bg-white text-blue-700 px-6 py-3 rounded-xl font-semibold shadow hover:bg-gray-100 transition">
+              Download APK
+            </a>
+
+            <span class="text-sm text-blue-200">
+              Free • Offline-first • Fast
+            </span>
+          </div>
+        </div>
+
+        <!-- PHONE MOCKUP -->
+        <div class="flex justify-center">
+          <div class="bg-black rounded-[2.5rem] p-2 shadow-2xl">
+            <img src="/screens/dashboard.png"
+                 class="w-72 rounded-[2rem]" />
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- FEATURES -->
-    <section class="features">
-      <h2>Everything You Need</h2>
+    <section class="max-w-6xl mx-auto px-6 py-20">
+      <h2 class="text-3xl font-semibold text-center mb-12">
+        Everything You Need
+      </h2>
 
-      <div class="grid">
-        <div class="card" v-for="f in features" :key="f.title">
-          <h3>{{ f.title }}</h3>
-          <p>{{ f.desc }}</p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div v-for="f in features"
+             :key="f.title"
+             class="p-6 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-lg transition">
+
+          <h3 class="font-semibold text-lg">{{ f.title }}</h3>
+          <p class="text-gray-500 dark:text-gray-400 mt-2 text-sm">
+            {{ f.desc }}
+          </p>
         </div>
       </div>
     </section>
 
     <!-- SHOWCASE -->
-    <section class="showcase">
-      <h2>App Screens</h2>
+    <section class="bg-gray-50 dark:bg-gray-900 py-20">
+      <h2 class="text-3xl font-semibold text-center mb-12">
+        App Preview
+      </h2>
 
-      <div class="screens">
-        <img src="/screens/dashboard.png" />
-        <img src="/screens/tenants.png" />
-        <img src="/screens/rooms.png" />
-        <img src="/screens/assignments.png" />
+      <div class="flex justify-center">
+      <div class="flex gap-6 overflow-x-auto px-6 pb-4 no-scrollbar snap-x snap-mandatory">
+        <img src="/screens/dashboard.png" class="w-64 rounded-xl shadow-lg snap-center" />
+        <img src="/screens/tenants.png" class="w-64 rounded-xl shadow-lg snap-center" />
+        <img src="/screens/rooms.png" class="w-64 rounded-xl shadow-lg snap-center" />
+        <img src="/screens/assignments.png" class="w-64 rounded-xl shadow-lg snap-center" />
       </div>
+    </div>
     </section>
 
     <!-- CTA -->
-    <section class="cta">
-      <h2>Start Managing Better Today</h2>
-      <a href="/downloads/boardtracker.apk" class="btn">
+    <section class="py-24 text-center bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      <h2 class="text-3xl md:text-4xl font-bold">
+        Start Managing Smarter Today
+      </h2>
+
+      <p class="mt-4 text-blue-100">
+        Download BoardTracker and simplify your operations.
+      </p>
+
+      <a href="/downloads/boardtracker.apk"
+         class="mt-8 inline-block bg-white text-blue-700 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition shadow">
         Download Now
       </a>
     </section>
 
+    <!-- FOOTER -->
+    <footer class="text-center py-8 text-gray-500 dark:text-gray-400 text-sm">
+      © 2026 BoardTracker. All rights reserved.
+    </footer>
+
   </div>
 </template>
-
-<script lang="ts">
-export default {
-  data() {
-    return {
-      features: [
-        { title: "Tenants", desc: "Manage tenant info easily" },
-        { title: "Rooms", desc: "Track occupancy and capacity" },
-        { title: "Assignments", desc: "Auto compute rent" },
-        { title: "Payments", desc: "Track rent payments" },
-        { title: "Expenses", desc: "Monitor bills" },
-        { title: "Inventory", desc: "Manage room items" },
-      ],
-    };
-  },
-};
-</script>
-
-<style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
-.app {
-  text-align: center;
-}
-
-/* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  background: white;
-}
-
-/* HERO */
-.hero {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #2563eb, #1e40af);
-  color: white;
-}
-
-.hero-text {
-  max-width: 400px;
-}
-
-.hero h1 {
-  font-size: 36px;
-  font-weight: bold;
-}
-
-.hero p {
-  margin: 20px 0;
-}
-
-.hero-image img {
-  width: 260px;
-  border-radius: 20px;
-  margin-left: 30px;
-}
-
-/* BUTTON */
-.btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: white;
-  color: #2563eb;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.small {
-  padding: 6px 12px;
-}
-
-/* FEATURES */
-.features {
-  padding: 60px 20px;
-}
-
-.grid {
-  margin-top: 20px;
-  display: grid;
-  gap: 15px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-.card {
-  padding: 20px;
-  background: #f3f4f6;
-  border-radius: 10px;
-}
-
-/* SHOWCASE */
-.showcase {
-  padding: 60px 20px;
-}
-
-.screens {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-}
-
-.screens img {
-  width: 220px;
-  border-radius: 12px;
-}
-
-/* CTA */
-.cta {
-  padding: 60px;
-  background: #2563eb;
-  color: white;
-}
-
-/* FOOTER */
-footer {
-  padding: 20px;
-  background: #111827;
-  color: white;
-}
-</style>
