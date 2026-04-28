@@ -7,4 +7,3 @@ purpose: [
   version_tracking, 
   auto_deploy
 ]
-`
