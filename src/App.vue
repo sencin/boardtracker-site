@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
+const version = ref('...')
+const buildTime = ref('')
+
 const features = [
   { title: "Tenants", desc: "Manage tenant records easily" },
   { title: "Rooms", desc: "Track occupancy & availability" },
@@ -7,6 +12,19 @@ const features = [
   { title: "Expenses", desc: "Track bills & utilities" },
   { title: "Inventory", desc: "Manage room items" },
 ];
+
+onMounted(async () => {
+  try {
+    const v = await fetch('/downloads/version.txt?t=' + Date.now())
+    version.value = (await v.text()).trim()
+
+    const t = await fetch('/downloads/build_time.txt?t=' + Date.now())
+    buildTime.value = (await t.text()).trim()
+  } catch (e) {
+    version.value = 'Unavailable'
+  }
+})
+
 </script>
 
 <template>
@@ -49,8 +67,11 @@ const features = [
           <div class="mt-8 flex items-center gap-4 flex-wrap">
             <a href="/downloads/boardtracker.apk"
                class="bg-white text-blue-700 px-6 py-3 rounded-xl font-semibold shadow hover:bg-gray-100 transition">
-              Download APK
+              Download v{{ version }}
             </a>
+            <p class="text-xs opacity-60 mt-1">
+              {{ buildTime }}
+            </p>
 
             <span class="text-sm text-blue-200">
               Free • Offline-first • Fast
